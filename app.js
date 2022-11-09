@@ -32,7 +32,7 @@ app.get("/", async (req, res) => {
 
 app.get("/:filename", async (req, res) => {
   const { filename } = req.params;
-  const file = await fs.readFile(`${filePath}/${filename}.txt`, {
+  const file = await fs.readFile(`${filePath}/${filename}.py`, {
     encoding: "utf-8",
   });
   return res.status(200).send(file);
@@ -40,11 +40,11 @@ app.get("/:filename", async (req, res) => {
 
 app.get("/d/:filename", async (req, res) => {
   const { filename } = req.params;
-  const file = await fs.readFile(`${filePath}/${filename}.txt`, {
+  const file = await fs.readFile(`${filePath}/${filename}.py`, {
     encoding: "utf-8",
   });
   if (file.length <= 0) return res.status(404).json({ message: "No file!" });
-  return res.download(`${filePath}/${filename}.txt`);
+  return res.download(`${filePath}/${filename}.py`);
 });
 
 app.post("/upload", function (req, res) {
