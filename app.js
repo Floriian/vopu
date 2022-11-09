@@ -66,6 +66,6 @@ app.post("/u/:name", async (req, res) => {
   if (!file) return res.status(500).json({ message: "An error happened." });
 });
 
-app.listen(3000, () => {
-  console.log(`App is listening at port ${3000}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`App is listening at port ${process.env.PORT}`);
 });
