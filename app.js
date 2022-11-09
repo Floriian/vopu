@@ -47,8 +47,15 @@ app.get("/d/:filename", async (req, res) => {
   return res.download(`${filePath}/${filename}.txt`);
 });
 
-//TODO
-app.post("/upload", function (req, res) {});
+app.post("/upload", function (req, res) {
+  if (!req.files) return res.status(500).json({ message: "No files!" });
+  const { filename } = req.files;
+  const uploadTo = `files/${filename.name}`;
+  filename.mv(uploadTo, (err) => {
+    if (err) return res.status(500).json({ message: "An error happened" });
+    res.status(200).json({ message: "File successfully uploaded!" });
+  });
+});
 
 app.post("/u/:name", async (req, res) => {
   const { content } = req.body;
