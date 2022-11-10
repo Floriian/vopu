@@ -35,7 +35,7 @@ app.get("/:filename", async (req, res) => {
   const file = await fs.readFile(`${filePath}/${filename}.py`, {
     encoding: "utf-8",
   });
-  return res.status(200).send(file);
+  return res.status(200).json({ file });
 });
 
 app.get("/d/:filename", async (req, res) => {
