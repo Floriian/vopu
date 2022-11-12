@@ -3,7 +3,7 @@ import { uploadByBody, uploadFile } from "../services/upload.service";
 
 const uploadRouter: Router = Router();
 
-uploadRouter.post("/u", uploadFile);
-uploadRouter.post("/u/:name", uploadByBody);
+uploadRouter.post("/", uploadFile);
+uploadRouter.post("/:name", uploadByBody);
 
 export default uploadRouter;

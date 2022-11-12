@@ -6,6 +6,7 @@ import getRouter from "./routes/get";
 import fs from "fs";
 import fileUpload from "express-fileupload";
 import { filePath } from "./config";
+import uploadRouter from "./routes/upload";
 
 async function bootstrap() {
   const app: Express = express();
@@ -19,6 +20,7 @@ async function bootstrap() {
   app.use(fileUpload());
 
   app.use("/", getRouter);
+  app.use("/u", uploadRouter);
 
   app.listen(process.env.PORT || 3000, () => {
     console.log(`App is listening at port ${process.env.port || 3000}`);
